@@ -51,18 +51,33 @@ DEFINE_INDEX_TYPE_TYPEDEF(
     operations_research::RoutingModel::VehicleClassIndex);
 
 
+%ignore operations_research::RoutingModel::AddVectorDimension(
+    std::vector<int64> values,
+    int64 capacity,
+    bool fix_start_cumul_to_zero,
+    const std::string& name);
+
 %ignore operations_research::RoutingModel::AddMatrixDimension(
     std::vector<std::vector<int64> > values,
     int64 capacity,
+    bool fix_start_cumul_to_zero,
     const std::string& name);
 
 %extend operations_research::RoutingModel {
-  void AddMatrixDimension(
+  int AddVectorDimension(
+    const std::vector<int64>& values,
+    int64 capacity,
+    bool fix_start_cumul_to_zero,
+    const std::string& name) {
+    return $self->AddVectorDimension(values, capacity, fix_start_cumul_to_zero, name).first;
+  }
+
+  int AddMatrixDimension(
     const std::vector<std::vector<int64> >& values,
     int64 capacity,
     bool fix_start_cumul_to_zero,
     const std::string& name) {
-    $self->AddMatrixDimension(values, capacity, fix_start_cumul_to_zero, name);
+    return $self->AddMatrixDimension(values, capacity, fix_start_cumul_to_zero, name).first;
   }
 
 }

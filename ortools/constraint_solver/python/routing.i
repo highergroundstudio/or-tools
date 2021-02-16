@@ -16,6 +16,9 @@
 
 %include "ortools/base/base.i"
 
+%include "std_pair.i"
+%template(PairIntBool) std::pair<int, bool>;
+
 %include "ortools/constraint_solver/python/constraint_solver.i"
 %include "ortools/constraint_solver/python/routing_types.i"
 %include "ortools/constraint_solver/python/routing_index_manager.i"

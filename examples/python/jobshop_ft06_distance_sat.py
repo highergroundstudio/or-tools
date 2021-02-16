@@ -68,7 +68,7 @@ def jobshop_ft06_distance():
                                           end=end_var,
                                           interval=interval_var)
 
-    # Create disjuctive constraints.
+    # Create disjunctive constraints.
     for i in all_machines:
         job_intervals = []
         job_indices = []
